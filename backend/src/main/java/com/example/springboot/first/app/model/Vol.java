@@ -60,11 +60,8 @@ public class Vol {
     @Column(name = "escale", nullable = false)
     private EscaleEnum escale;
 
-    @OneToMany(mappedBy = "vol", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<EscaleVol> escales;
 
-    @OneToMany(mappedBy = "vol", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Voyage> voyages;
+
 
     @Transient // Ce champ n'est pas persisté en base de données
     private List<Long> escales_aller;
@@ -135,21 +132,7 @@ public class Vol {
         this.escale = escale;
     }
 
-    public List<EscaleVol> getEscales() {
-        return escales;
-    }
 
-    public void setEscales(List<EscaleVol> escales) {
-        this.escales = escales;
-    }
-
-    public List<Voyage> getVoyages() {
-        return voyages;
-    }
-
-    public void setVoyages(List<Voyage> voyages) {
-        this.voyages = voyages;
-    }
 
     public List<Long> getEscales_aller() {
         return escales_aller;
@@ -159,16 +142,7 @@ public class Vol {
         this.escales_aller = escales_aller;
     }
 
-    // Méthodes utilitaires
-    public void addEscale(EscaleVol escale) {
-        escales.add(escale);
-        escale.setVol(this);
-    }
 
-    public void removeEscale(EscaleVol escale) {
-        escales.remove(escale);
-        escale.setVol(null);
-    }
 
     // Equals et hashCode
     @Override

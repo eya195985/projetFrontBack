@@ -15,7 +15,7 @@ public class AnnonceController {
     @Autowired
     private AnnonceService annonceService;
 
-    @GetMapping("/en-attente")
+    @GetMapping("/En-attente")
     public ResponseEntity<List<Annonce>> getAnnoncesEnAttente() {
         List<Annonce> annonces = annonceService.getAnnoncesEnAttente();
         return ResponseEntity.ok(annonces);

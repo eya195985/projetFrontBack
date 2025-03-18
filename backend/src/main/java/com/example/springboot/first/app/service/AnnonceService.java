@@ -20,7 +20,7 @@ public class AnnonceService {
     private StatutAnnonceRepository statutAnnonceRepository;
 
     public List<Annonce> getAnnoncesEnAttente() {
-        return annonceRepository.findByStatutAnnonce_Statut("en attente");
+        return annonceRepository.findByStatutAnnonce_Statut("En attente");
     }
 
     public void updateAnnonceStatus(Long idAnnonce, String statut) {

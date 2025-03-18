@@ -1,6 +1,8 @@
 package com.example.springboot.first.app.model;
 
 import jakarta.persistence.*;
+
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -23,6 +25,7 @@ public class Annonce {
     @ManyToOne
     @JoinColumn(name = "id_statut_annonce", nullable = false)
     private StatutAnnonce statutAnnonce;
+
 
     // Getters et Setters
     public Long getIdAnnonce() {
