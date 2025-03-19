@@ -1,6 +1,8 @@
 package com.example.springboot.first.app.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -23,6 +25,7 @@ public class ServiceSupplementaire {
 
     // Relation ManyToMany avec la table de jointure
     @OneToMany(mappedBy = "serviceSupplementaire", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference // Permet la sérialisation de cette propriété
     private Set<Supplementaires> supplementaires;
 
     // Getters et Setters

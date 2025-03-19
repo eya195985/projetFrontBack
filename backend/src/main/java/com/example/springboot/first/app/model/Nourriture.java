@@ -1,6 +1,7 @@
 package com.example.springboot.first.app.model;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 
@@ -15,6 +16,7 @@ public class Nourriture {
 
     @ManyToOne
     @JoinColumn(name = "id_type_nourriture", nullable = false)
+    @JsonManagedReference
     private TypeNourriture typeNourriture;
 
     @Column(name = "options")

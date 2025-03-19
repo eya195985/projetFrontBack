@@ -1,6 +1,9 @@
 package com.example.springboot.first.app.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "itinéraire")
@@ -19,7 +22,20 @@ public class Itineraire {
 
     @ManyToOne
     @JoinColumn(name = "id_voyage", nullable = false)
+    @JsonBackReference
     private Voyage voyage;
+
+    @Transient // Cette annotation indique que le champ n'est pas persisté en base de données
+    private List<Services> services; // Liste des services associés
+
+    // Getters et setters
+    public List<Services> getServices() {
+        return services;
+    }
+
+    public void setServices(List<Services> services) {
+        this.services = services;
+    }
 
     // Getters et Setters
     public Long getId() {

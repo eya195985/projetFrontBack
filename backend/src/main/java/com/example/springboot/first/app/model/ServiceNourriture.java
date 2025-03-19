@@ -2,6 +2,8 @@ package com.example.springboot.first.app.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -16,12 +18,20 @@ public class ServiceNourriture implements Serializable {
     @ManyToOne
     @MapsId("idService")
     @JoinColumn(name = "id_service")
+    @JsonBackReference
     private Services services;
 
     @ManyToOne
     @MapsId("idNourriture")
     @JoinColumn(name = "id_nourriture")
+    @JsonManagedReference
     private Nourriture nourriture;
+
+    @ManyToOne
+    @MapsId("idService") // Lie cet attribut à la colonne id_service dans ServiceTransportId
+    @JoinColumn(name = "id_service")
+    @JsonBackReference
+    private Services service;
 
     // Getters et Setters
     public ServiceNourritureId getId() {

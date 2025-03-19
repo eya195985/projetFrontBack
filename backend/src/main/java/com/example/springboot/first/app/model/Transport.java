@@ -1,5 +1,6 @@
 package com.example.springboot.first.app.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.Set;
@@ -16,11 +17,12 @@ public class Transport {
     // Relation Many-to-One avec TypeTransport
     @ManyToOne
     @JoinColumn(name = "id_type_transport", nullable = false) // Colonne de jointure dans la table transport
-    @JsonBackReference // Pour éviter les références circulaires lors de la sérialisation JSON
+    @JsonManagedReference // Pour éviter les références circulaires lors de la sérialisation JSON
     private TypeTransport typeTransport;
 
     // Relation One-to-Many avec ServiceTransport (table de jointure)
     @OneToMany(mappedBy = "transport", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonBackReference
     private Set<ServiceTransport> serviceTransports;
 
     // Getters et setters

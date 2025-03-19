@@ -1,5 +1,7 @@
 package com.example.springboot.first.app.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,11 +14,13 @@ public class Supplementaires {
     @ManyToOne
     @MapsId("serviceSupplementaireId")
     @JoinColumn(name = "id_service_supplémentaire")
+    @JsonManagedReference
     private ServiceSupplementaire serviceSupplementaire;
 
     @ManyToOne
     @MapsId("serviceId")
     @JoinColumn(name = "id_service")
+    @JsonBackReference
     private Services service;
 
 
